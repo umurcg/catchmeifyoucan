@@ -17,6 +17,8 @@ public class Weapon : MonoBehaviour {
     [SerializeField] float kickBackAngle=30;
     [SerializeField] float rotateSpeed=1;
 
+    
+
     Timer timer;
     protected bool refilling = false;
     [SerializeField] GameObject owner;

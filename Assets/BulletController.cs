@@ -8,7 +8,9 @@ public class BulletController : MonoBehaviour {
     [SerializeField] protected float range;
     [SerializeField] protected float damageAmount;
     [SerializeField] protected float initialForceAmount;
-    
+
+    [SerializeField] GameObject particles;
+
     protected GameObject owner;
     protected bool shooted=false;
 
@@ -63,6 +65,11 @@ public class BulletController : MonoBehaviour {
 
     protected virtual void Explode()
     {
+        if (particles != null)
+        {
+         GameObject spawnedPartc=   Instantiate(particles);
+         spawnedPartc.transform.position = transform.position;
+        }
         Destroy(gameObject);
     }
 

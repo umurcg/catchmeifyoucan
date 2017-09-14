@@ -22,7 +22,17 @@ public class TurretController : MonoBehaviour {
 
         rotateTowardsPlayer();
 
-        if (!weapon.isRefilling()) weapon.Shoot(); 
+        if (!weapon.isRefilling())
+        {
+            //Raycast to understand wether or not player is aimed
+            Ray ray = new Ray(transform.position, transform.forward);
+            RaycastHit hit;
+            if(Physics.Raycast(ray,out hit, 1000))
+            {
+                if(hit.transform.gameObject==player) weapon.Shoot();
+            }
+                
+        }
 
     }
 

@@ -125,4 +125,7 @@ MonoBehaviour:
     type: 2}
   barrelPosition: {fileID: 1658313174516424}
   refillTime: 3
+  kickBackWeapon: 0
+  kickBackAngle: 30
+  rotateSpeed: 1
   owner: {fileID: 0}

@@ -10,6 +10,7 @@ public class DestroyableObject : MonoBehaviour {
 
     [SerializeField]
     protected float initialHealth = 100;
+    [SerializeField] float point=10;
     protected float health;
 
     //UI
@@ -78,6 +79,10 @@ public class DestroyableObject : MonoBehaviour {
     {
         Debug.Log(gameObject.name + " I am dead");
         if(pointBar!=null) Destroy(pointBar.gameObject);
+
+        //Give point to player
+        LevelController.controller.earnPoint(point);
+
         Destroy(gameObject);
 
         

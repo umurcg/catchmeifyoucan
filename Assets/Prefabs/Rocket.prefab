@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 23253272499316006}
   - component: {fileID: 114604655207033216}
   - component: {fileID: 54737744177396148}
+  - component: {fileID: 114611699165872224}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Untagged
@@ -212,7 +213,21 @@ MonoBehaviour:
   range: 100
   damageAmount: 50
   initialForceAmount: 20
+  particles: {fileID: 100010, guid: 031d08f52af1daa4f929b85221519426, type: 2}
   area: {fileID: 114235635252456254}
+--- !u!114 &114611699165872224
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1790383556924852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5acbca215ddf8474fb8af3f97185081c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tolerance: 0.0001
+  rotSpeed: 2
 --- !u!135 &135503439591005594
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -223,7 +238,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 6.99
+  m_Radius: 11.41
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &136073671106090928
 CapsuleCollider:

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerHealthController : DestroyableObject
 {
     [SerializeField] PointBarScript playerHealth;
-    [SerializeField] LevelController levelController;
+    //[SerializeField] LevelController levelController;
     protected override void Start()
     {
         health = initialHealth;
@@ -16,8 +16,8 @@ public class PlayerHealthController : DestroyableObject
 
     protected override void Die()
     {
-        base.Die();
-        levelController.restartGame();
+        //base.Die();
+        LevelController.controller.restartGame();
 
 
     }
