@@ -10,13 +10,31 @@ public class DestroyableObject : MonoBehaviour {
 
     [SerializeField]
     protected float initialHealth = 100;
-    float health;
+    protected float health;
+
+    //UI
+    [SerializeField] GameObject pointBarPrefab;
+    [SerializeField] GameObject canvas; 
+    protected PointBarScript pointBar;
+    
 
     public float getHealth() { return health; }
 
-    private void Start()
+    protected virtual void Start()
     {
         health = initialHealth;
+
+        if (pointBarPrefab != null)
+        {
+
+            //Instantiate point bat
+            EnemyPointBar enemyBar = (Instantiate(pointBarPrefab, canvas.transform) as GameObject).GetComponent<EnemyPointBar>();
+            enemyBar.owner = gameObject;
+            pointBar = enemyBar;
+            pointBar.setPoint(health);
+
+        }
+
     }
 
     public virtual void Damage(float amount)
@@ -26,7 +44,10 @@ public class DestroyableObject : MonoBehaviour {
 
         health -= amount;
 
-        Debug.Log(gameObject.name + " took damage " + amount+ "current health is "+ health);
+        //Debug.Log(gameObject.name + " took damage " + amount+ "current health is "+ health);
+
+        //If ui script is attached then update point of bar
+        if(pointBar) pointBar.setPoint(health);
 
         if (health <=0) Die();
 

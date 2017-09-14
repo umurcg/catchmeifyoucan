@@ -75,4 +75,6 @@ public class Weapon : MonoBehaviour {
 
     }
 
+    public bool isRefilling() { return refilling; }
+
 }
