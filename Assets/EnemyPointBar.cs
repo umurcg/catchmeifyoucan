@@ -11,10 +11,12 @@ public class EnemyPointBar : PointBarScript {
     [SerializeField] Vector3 offset = new Vector3(0, 30, 0);
     [SerializeField] float scaleFactor = 3f;
     Camera cam;
+    
 
 	// Use this for initialization
 	void Start () {
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+
 	}
 	
 	// Update is called once per frame
@@ -25,6 +27,8 @@ public class EnemyPointBar : PointBarScript {
         transform.position = cam.WorldToScreenPoint(owner.transform.position + offset);
 
         preserveScale();
+
+
 
     }
 
@@ -42,4 +46,6 @@ public class EnemyPointBar : PointBarScript {
 
         transform.localScale = Vector3.one * scale * scaleFactor;
     }
+    
+
 }

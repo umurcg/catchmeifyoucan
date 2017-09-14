@@ -16,6 +16,7 @@ public class DestroyableObject : MonoBehaviour {
     [SerializeField] GameObject pointBarPrefab;
     [SerializeField] GameObject canvas; 
     protected PointBarScript pointBar;
+
     
 
     public float getHealth() { return health; }
@@ -54,13 +55,31 @@ public class DestroyableObject : MonoBehaviour {
 
     }
 
-    
+    /// <summary>
+    /// Disable enable point bar when object is not seen and seen respectively.
+    /// </summary>
+
+    protected virtual void OnBecameVisible()
+    {
+        if(pointBar!=null)
+             pointBar.gameObject.SetActive(true);
+    }
+
+
+    protected virtual void OnBecameInvisible()
+    {
+        if (pointBar != null)
+            pointBar.gameObject.SetActive(false);
+    }
+
 
 
     protected virtual void Die()
     {
         Debug.Log(gameObject.name + " I am dead");
+        if(pointBar!=null) Destroy(pointBar.gameObject);
         Destroy(gameObject);
+
         
     }
 

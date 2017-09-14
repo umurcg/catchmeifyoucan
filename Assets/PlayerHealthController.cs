@@ -22,4 +22,15 @@ public class PlayerHealthController : DestroyableObject
 
     }
 
+
+    //Override visibility functionality because healt bar of player never should be deactivated during game regardless of visibility.
+    protected override void OnBecameInvisible()
+    {
+        
+    }
+
+    protected override void OnBecameVisible()
+    {
+    }
+
 }

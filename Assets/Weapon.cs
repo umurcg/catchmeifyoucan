@@ -11,6 +11,12 @@ public class Weapon : MonoBehaviour {
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] GameObject barrelPosition;
     [SerializeField] float refillTime;
+
+    //Makes an effects like kick back when weapon is fired
+    [SerializeField] bool kickBackWeapon=true;
+    [SerializeField] float kickBackAngle=30;
+    [SerializeField] float rotateSpeed=1;
+
     Timer timer;
     protected bool refilling = false;
     [SerializeField] GameObject owner;
@@ -66,6 +72,8 @@ public class Weapon : MonoBehaviour {
 
         bc.shoot();
 
+        if (kickBackWeapon) StartCoroutine(kickBack());
+
         float forceAmount = bc.getForce();
         rb.AddForce(direction * forceAmount, ForceMode.Impulse);
 
@@ -76,5 +84,30 @@ public class Weapon : MonoBehaviour {
     }
 
     public bool isRefilling() { return refilling; }
+
+    IEnumerator kickBack()
+    {
+        float ratio = 0;
+        Quaternion originalRot = transform.rotation;
+
+        while (ratio < kickBackAngle)
+        {
+            ratio += Time.deltaTime * rotateSpeed;
+            transform.RotateAround(transform.position, transform.right, -1*Time.deltaTime * rotateSpeed);
+            yield return null;
+        }
+
+
+        while (ratio > 0)
+        {
+            ratio -= Time.deltaTime * rotateSpeed;
+            transform.RotateAround(transform.position, transform.right, Time.deltaTime * rotateSpeed);
+            yield return null;
+        }
+
+        transform.rotation = originalRot;
+        
+        yield break;
+    }
 
 }

@@ -157,6 +157,7 @@ MonoBehaviour:
   fill: {fileID: 114763731545416448}
   owner: {fileID: 0}
   offset: {x: 0, y: 1.5, z: 0}
+  scaleFactor: 3
 --- !u!114 &114763731545416448
 MonoBehaviour:
   m_ObjectHideFlags: 1
